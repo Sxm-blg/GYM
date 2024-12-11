@@ -10,4 +10,8 @@ public class User {
 	
 	private int membershipNumber;
 	private int a;
+	
+	public static void main(String[] args) {
+		System.out.println("s");
+	}
 }
