@@ -3,13 +3,20 @@ package gym;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Main {
 	
 	    private static Map<String, GymUser> users = new HashMap<>();
 	    private static final FitnessCoach trainer = new FitnessCoach("simon.atim@gmail.com", "SerkanBelogi");
 	    private static Scanner sc = new Scanner(System.in);
-
+		
+	    //Registirierungsvariablen wegen Exception
+	    private static double weight;
+	    private static double height;
+	    private static int age;
+	    private static double targetWeight;
+	    
 	    public static void main(String[] args) {
 	        users.put(trainer.getEmail(), trainer); // Trainer vorregistrieren
 
@@ -34,7 +41,7 @@ public class Main {
 	        }
 	    }
 
-	    private static void registerMember() {
+	    private static void registerMember() throws InputMismatchException{
 	        System.out.println("\n-------- REGISTRIERUNG --------");
 	        System.out.print("E-Mail: ");
 	        String email = sc.nextLine();
@@ -51,16 +58,30 @@ public class Main {
 	        String goal = sc.nextLine();
 
 	        System.out.print("Gewicht (kg): ");
+	        try {
 	        double weight = sc.nextDouble();
+	        } catch(InputMismatchException e) {
+	        	throw new InputMismatchException("Bitte geben Sie eine Zahl ein!");
+	        }
+	      
 
 	        System.out.print("Größe (m): ");
-	        double height = sc.nextDouble();
+	        try { double height = sc.nextDouble();
+	        } catch(InputMismatchException e) {
+	        	throw new InputMismatchException("Bitte geben Sie eine Zahl ein!");
+	        }
 
 	        System.out.print("Alter: ");
-	        int age = sc.nextInt();
+	        try { int age = sc.nextInt();
+	        } catch(InputMismatchException e) {
+	        	throw new InputMismatchException("Bitte geben Sie eine Zahl ein!");
+	        }
 
 	        System.out.print("Zielgewicht (kg): ");
-	        double targetWeight = sc.nextDouble();
+	        try { double targetWeight = sc.nextDouble();
+	        } catch(InputMismatchException e) {
+	        	throw new InputMismatchException("Bitte geben Sie eine Zahl ein!");
+	        }
 
 	        GymMember member = new GymMember(email, password, goal, weight, height, age, targetWeight);
 	        users.put(email, member);
