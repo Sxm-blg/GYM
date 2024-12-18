@@ -14,7 +14,7 @@ public class MemberService implements GymUserService {
     @Override
     public void showMenu() {
         while (true) {
-            System.out.println("\nMITGLIED-MENÜ:");
+            System.out.println("\n-------- MITGLIED-MENÜ --------");
             System.out.println("1. Eigene Daten anzeigen");
             System.out.println("2. Daten aktualisieren");
             System.out.println("3. Trainingsplan anzeigen");
@@ -30,7 +30,8 @@ public class MemberService implements GymUserService {
                 case 3 -> member.getTrainingPlan().displayPlan();
                 case 4 -> addExercise();
                 case 5 -> {
-                    System.out.println("Abgemeldet.");
+                    System.out.println("\nAbgemeldet.");
+                    System.out.println("----------------");
                     return;
                 }
                 default -> System.out.println("Ungültige Eingabe.");
@@ -39,7 +40,7 @@ public class MemberService implements GymUserService {
     }
 
     private void displayMemberData() {
-    	System.out.println("Daten des Mitglieds:");
+    	System.out.println("\n-------- Daten des Mitglieds --------");
         System.out.println("Mitgliedsnummer: " + member.getMemberId());
         System.out.println("E-Mail: " + member.getEmail());
         System.out.println("Ziel: " + member.getGoal());
@@ -48,6 +49,7 @@ public class MemberService implements GymUserService {
         System.out.println("Alter: " + member.getAge() + " Jahre");
         System.out.println("Zielgewicht: " + member.getTargetWeight() + " kg");
         System.out.println("Vorheriges Gewicht: " + member.getPreviousWeight() + " kg");
+        System.out.println("--------------------------------------");
         // Logik, um die Mitgliedsdaten anzuzeigen
     }
 
@@ -63,24 +65,27 @@ public class MemberService implements GymUserService {
          sc.nextLine(); // Puffer leeren
 
          member.updateData(weight, height, age, targetWeight);
-         System.out.println("Daten erfolgreich aktualisiert.");
+         System.out.println("\nDaten erfolgreich aktualisiert.");
+         System.out.println("----------------------------------------");
      }
         // Logik zur Aktualisierung der Daten
     
 
     private void addExercise() {
-    	 System.out.print("Übungsname: ");
+    	System.out.println("\n-------- Trainingsplan Hinzufügen --------");
+    	System.out.print("Übungsname: ");
     	    String name = sc.nextLine();
-    	    System.out.print("Anzahl der Sätze: ");
+    	 System.out.print("Anzahl der Sätze: ");
     	    int sets = sc.nextInt();
-    	    System.out.print("Wiederholungen pro Satz: ");
+    	 System.out.print("Wiederholungen pro Satz: ");
     	    int repetitions = sc.nextInt();
-    	    System.out.print("Pause zwischen den Sätzen (Sekunden): ");
+    	 System.out.print("Pause zwischen den Sätzen (Sekunden): ");
     	    int restBetweenSets = sc.nextInt();
     	    sc.nextLine(); // Puffer leeren
 
     	    member.getTrainingPlan().addExercise(name, sets, repetitions, restBetweenSets);
-    	    System.out.println("Übung erfolgreich hinzugefügt.");
+    	    System.out.println("\nÜbung erfolgreich hinzugefügt.");
+    	    System.out.println("----------------------------------------");
         // Weitere Eingaben für die Übung
         // Hinzufügen zur Trainingsplanliste
     }

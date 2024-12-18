@@ -13,13 +13,15 @@ public class TrainingPlan {
 
 	    public void displayPlan() {
 	        if (exercises.isEmpty()) {
-	            System.out.println("Kein Trainingsplan vorhanden.");
+	            System.out.println("\nKein Trainingsplan vorhanden.");
+	            System.out.println("--------------------------------");
 	            return;
 	        }
 
-	        System.out.println("Trainingsplan:");
+	        System.out.println("\n-------- Trainingsplan --------");
 	        for (Exercise exercise : exercises) {
 	            System.out.println(exercise);
+	            System.out.println("----------------------------------------");
 	        }
 	    }
 

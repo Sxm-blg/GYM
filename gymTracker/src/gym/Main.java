@@ -14,7 +14,7 @@ public class Main {
 	        users.put(trainer.getEmail(), trainer); // Trainer vorregistrieren
 
 	        while (true) {
-	            System.out.println("\nHauptmenü:");
+	            System.out.println("\n-------- Hauptmenü --------");
 	            System.out.println("1. Registrieren");
 	            System.out.println("2. Anmelden");
 	            System.out.println("3. Programm beenden");
@@ -35,7 +35,7 @@ public class Main {
 	    }
 
 	    private static void registerMember() {
-	        System.out.println("REGISTRIERUNG:");
+	        System.out.println("\n-------- REGISTRIERUNG --------");
 	        System.out.print("E-Mail: ");
 	        String email = sc.nextLine();
 
@@ -65,11 +65,12 @@ public class Main {
 	        GymMember member = new GymMember(email, password, goal, weight, height, age, targetWeight);
 	        users.put(email, member);
 
-	        System.out.println("Registrierung erfolgreich! Ihre Mitgliedsnummer ist: " + member.getMemberId());
+	        System.out.println("\nRegistrierung erfolgreich! Ihre Mitgliedsnummer ist: " + member.getMemberId());
+	        System.out.println("-------------------------------------------------------------");
 	    }
 
 	    private static void login() {
-	        System.out.println("ANMELDUNG:");
+	        System.out.println("\n-------- ANMELDUNG --------");
 	        System.out.print("E-Mail: ");
 	        String email = sc.nextLine();
 	        System.out.print("Passwort: ");
