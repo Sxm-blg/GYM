@@ -1,12 +1,17 @@
 package gym;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
 public class Main {
-	
+	  	private static final String FILE_NAME = "members.txt";
 	    private static Map<String, GymUser> users = new HashMap<>();
 	    private static final FitnessCoach trainer = new FitnessCoach("simon.atim@gmail.com", "SerkanBelogi");
 	    private static Scanner sc = new Scanner(System.in);
@@ -19,7 +24,9 @@ public class Main {
 	    
 	    public static void main(String[] args) {
 	        users.put(trainer.getEmail(), trainer); // Trainer vorregistrieren
-
+	        loadMembersFromFile();
+	        
+	        
 	        while (true) {
 	            System.out.println("\n-------- Hauptmenü --------");
 	            System.out.println("1. Registrieren");
@@ -60,10 +67,12 @@ public class Main {
 	        System.out.print("Gewicht (kg): ");
 	        try {
 	        double weight = sc.nextDouble();
-	        } catch(InputMismatchException e) {
+	        
+	        } catch(InputMismatchException e) { 
 	        	throw new InputMismatchException("Bitte geben Sie eine Zahl ein!");
+	        	
 	        }
-	      
+	        
 
 	        System.out.print("Größe (m): ");
 	        try { double height = sc.nextDouble();
@@ -85,6 +94,8 @@ public class Main {
 
 	        GymMember member = new GymMember(email, password, goal, weight, height, age, targetWeight);
 	        users.put(email, member);
+	        
+	        saveMembersToFile();
 
 	        System.out.println("\nRegistrierung erfolgreich! Ihre Mitgliedsnummer ist: " + member.getMemberId());
 	        System.out.println("-------------------------------------------------------------");
@@ -108,6 +119,52 @@ public class Main {
 	       // System.out.println("Mitgliedsnummer: " + member.getMemberId());
 
 	    }
-	    
+	    private static void saveMembersToFile() {
+	        List<String> lines = new ArrayList<>();
+	        for (GymUser user : users.values()) {
+	            // Überprüfen, ob der Benutzer ein GymMember ist
+	            if (user instanceof GymMember) {
+	                GymMember member = (GymMember) user;
+	                lines.add(member.toFileFormat());
+	            }
+	        }
+
+	        try {
+	            Files.write(Path.of("members.txt"), lines);
+	            System.out.println("Mitglieder erfolgreich in der Datei gespeichert.");
+	        } catch (IOException e) {
+	            System.out.println("Fehler beim Speichern der Mitglieder: " + e.getMessage());
+	        }
+	    }
+	    private static void loadMembersFromFile() {
+	        if (!Files.exists(Path.of(FILE_NAME))) {
+	            System.out.println("Datei " + FILE_NAME + " existiert nicht. Mitglieder werden nicht geladen.");
+	            return;
+	        }
+
+	        try {
+	            List<String> lines = Files.readAllLines(Path.of(FILE_NAME));
+	            System.out.println("Dateiinhalt wird geladen...");
+	            
+	            for (String line : lines) {
+	               try {
+	                    String[] parts = line.split(";");
+	                    if (parts.length != 9) {
+	                        System.out.println("Ungültige Zeile: " + line);
+	                        continue; // Überspringe ungültige Zeilen
+	                    }
+
+	                    GymMember member = GymMember.fromFileFormat(line);
+	                    users.put(member.getEmail(), member);
+	                } catch (Exception ex) {
+	                    System.out.println("Fehler beim Verarbeiten der Zeile: " + line);
+	                    System.out.println("Fehler: " + ex.getMessage());
+	                }
+	            }
+	            System.out.println("Mitglieder erfolgreich aus der Datei geladen.");
+	        } catch (IOException e) {
+	            System.out.println("Fehler beim Lesen der Datei: " + e.getMessage());
+	        }
+	    }
 	}
 

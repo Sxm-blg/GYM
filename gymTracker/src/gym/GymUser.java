@@ -22,8 +22,9 @@ public abstract class GymUser {
     public boolean checkPassword(String inputPassword) {
         return this.password.equals(inputPassword);
     }
-
+    
     public abstract GymUserService createService(Scanner sc, Map<String, GymUser> users);
-}
+    
+   }
 
 

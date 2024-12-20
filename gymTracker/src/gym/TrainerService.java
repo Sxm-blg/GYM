@@ -36,7 +36,17 @@ public class TrainerService implements GymUserService {
     private void displayAllProgress() {
         for (GymUser user : users.values()) {
             if (user instanceof GymMember member) {
-                // Logik zur Anzeige des Fortschritts
+            	 System.out.println("Mitglied: " + member.getMemberId());
+            	 System.out.println("Daten des Mitglieds:");
+                 System.out.println("E-Mail: " + member.getEmail());
+                 System.out.println("Ziel: " + member.getGoal());
+                 System.out.println("Gewicht: " + member.getWeight() + " kg");
+                 System.out.println("Größe: " + member.getHeight() + " m");
+                 System.out.println("Alter: " + member.getAge() + " Jahre");
+                 System.out.println("Zielgewicht: " + member.getTargetWeight() + " kg");
+                 System.out.println("Vorheriges Gewicht: " + member.getPreviousWeight() + " kg");
+                 System.out.println("Training" + member.getTrainingPlan());
+                 
             }
         }
     }

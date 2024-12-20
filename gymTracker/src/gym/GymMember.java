@@ -109,8 +109,37 @@ public class GymMember extends GymUser{
 	    }
 
 		public int getMemberId() {
-			// TODO Auto-generated method stub
 			return memberId;
 		}
-	}
+		 public String toFileFormat() {
+		        return getMemberId() + ";" + getEmail() + ";" + password + ";" + getGoal() + ";"+ getWeight() + ";" + getHeight() + ";" + getAge() + ";" + getTargetWeight() + ";" + getPreviousWeight();
+		    }
+
+		 public static GymMember fromFileFormat(String fileLine) {
+			    String[] parts = fileLine.split(";");
+			    if (parts.length != 9) {
+			        throw new IllegalArgumentException("Ungültiges Dateiformat: " + fileLine);
+			    }
+
+			    try {
+			        int memberId = Integer.parseInt(parts[0]);
+			        String email = parts[1];
+			        String password = parts[2];
+			        String goal = parts[3];
+			        double weight = Double.parseDouble(parts[4]);
+			        double height = Double.parseDouble(parts[5]);
+			        int age = Integer.parseInt(parts[6]);
+			        double targetWeight = Double.parseDouble(parts[7]);
+			        double previousWeight = Double.parseDouble(parts[8]);
+
+			        GymMember member = new GymMember(email, password, goal, weight, height, age, targetWeight);
+			        member.setMemberId(memberId); // Setzt die Mitgliedsnummer
+			        member.setPreviousWeight(previousWeight); // Setzt das vorherige Gewicht
+			        return member;
+			    } catch (NumberFormatException e) {
+			        throw new IllegalArgumentException("Fehler beim Parsen der Zeile: " + fileLine, e);
+			    }
+			}
+	    }
+
 

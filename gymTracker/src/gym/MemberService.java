@@ -19,7 +19,8 @@ public class MemberService implements GymUserService {
             System.out.println("2. Daten aktualisieren");
             System.out.println("3. Trainingsplan anzeigen");
             System.out.println("4. Trainingsplan hinzufügen");
-            System.out.println("5. Abmelden");
+            System.out.println("5. Trainingsplan löschen");
+            System.out.println("6. Abmelden");
 
             int choice = sc.nextInt();
             sc.nextLine(); // Puffer leeren
@@ -29,7 +30,8 @@ public class MemberService implements GymUserService {
                 case 2 -> updateMemberData();
                 case 3 -> member.getTrainingPlan().displayPlan();
                 case 4 -> addExercise();
-                case 5 -> {
+                case 5 -> member.getTrainingPlan().clearPlan();
+                case 6 -> {
                     System.out.println("\nAbgemeldet.");
                     System.out.println("----------------");
                     return;
@@ -38,6 +40,7 @@ public class MemberService implements GymUserService {
             }
         }
     }
+   
 
     private void displayMemberData() {
     	System.out.println("\n-------- Daten des Mitglieds --------");
