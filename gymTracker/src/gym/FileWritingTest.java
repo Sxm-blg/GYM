@@ -7,7 +7,11 @@ import java.util.List;
 public class FileWritingTest {
 	  public static void main(String[] args) {
 	        String fileName = "data.txt";
+<<<<<<< Updated upstream
 	        List<String> content = List.of("Zeile 1", "Zeile 3");
+=======
+	        List<String> content = List.of("Zeile 1",, "Zeile 3");
+>>>>>>> Stashed changes
 
 	        try {
 	            Files.write(Path.of(fileName), content);

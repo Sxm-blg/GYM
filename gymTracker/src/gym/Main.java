@@ -137,6 +137,7 @@ public class Main {
 	        }
 	    }
 	    private static void loadMembersFromFile() {
+<<<<<<< Updated upstream
 	        if (!Files.exists(Path.of(FILE_NAME))) {
 	            System.out.println("Datei " + FILE_NAME + " existiert nicht. Mitglieder werden nicht geladen.");
 	            return;
@@ -157,14 +158,31 @@ public class Main {
 	                    GymMember member = GymMember.fromFileFormat(line);
 	                    users.put(member.getEmail(), member);
 	                } catch (Exception ex) {
+=======
+	        try {
+	            List<String> lines = Files.readAllLines(Path.of(FILE_NAME));
+	            for (String line : lines) {
+	                try {
+	                    GymMember member = GymMember.fromFileFormat(line);
+	                    users.put(member.getEmail(), member);
+	                } catch (Exception ex) {
+	                    // Fehlerhafte Zeile wird protokolliert und übersprungen
+>>>>>>> Stashed changes
 	                    System.out.println("Fehler beim Verarbeiten der Zeile: " + line);
 	                    System.out.println("Fehler: " + ex.getMessage());
 	                }
 	            }
 	            System.out.println("Mitglieder erfolgreich aus der Datei geladen.");
 	        } catch (IOException e) {
+<<<<<<< Updated upstream
 	            System.out.println("Fehler beim Lesen der Datei: " + e.getMessage());
 	        }
 	    }
+=======
+	            System.out.println("Keine Mitgliederdatei gefunden. Neue Datei wird erstellt.");
+	        }
+	    }
+	    
+>>>>>>> Stashed changes
 	}
 

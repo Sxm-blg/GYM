@@ -112,6 +112,7 @@ public class GymMember extends GymUser{
 			return memberId;
 		}
 		 public String toFileFormat() {
+<<<<<<< Updated upstream
 		        return getMemberId() + ";" + getEmail() + ";" + password + ";" + getGoal() + ";"+ getWeight() + ";" + getHeight() + ";" + getAge() + ";" + getTargetWeight() + ";" + getPreviousWeight();
 		    }
 
@@ -142,4 +143,22 @@ public class GymMember extends GymUser{
 			}
 	    }
 
+=======
+		        return getMemberId() + ";" + getEmail() + ";" + password + ";" + getWeight() + ";" + getHeight() + ";" + getAge() + ";" + getTargetWeight() + ";" + getPreviousWeight();
+		    }
+
+	    public static GymMember fromFileFormat(String fileLine) {
+	        String[] parts = fileLine.split(";");
+	        return new GymMember(
+	                parts[0], // memberId
+	                parts[1], // email
+	                parts[2], // password
+	                Double.parseDouble(parts[4]), // weight
+	                Double.parseDouble(parts[5]), // height
+	                Integer.parseInt(parts[6]), // age
+	                Double.parseDouble(parts[7]) // targetWeight
+	        );
+	    }
+}
+>>>>>>> Stashed changes
 
