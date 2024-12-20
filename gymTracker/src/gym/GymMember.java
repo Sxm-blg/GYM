@@ -113,6 +113,7 @@ public class GymMember extends GymUser{
 		}
 		 public String toFileFormat() {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		        return getMemberId() + ";" + getEmail() + ";" + password + ";" + getGoal() + ";"+ getWeight() + ";" + getHeight() + ";" + getAge() + ";" + getTargetWeight() + ";" + getPreviousWeight();
 		    }
 
@@ -144,6 +145,8 @@ public class GymMember extends GymUser{
 	    }
 
 =======
+=======
+>>>>>>> Stashed changes
 		        return getMemberId() + ";" + getEmail() + ";" + password + ";" + getWeight() + ";" + getHeight() + ";" + getAge() + ";" + getTargetWeight() + ";" + getPreviousWeight();
 		    }
 
@@ -160,5 +163,8 @@ public class GymMember extends GymUser{
 	        );
 	    }
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
