@@ -32,15 +32,12 @@ public class MemberService implements GymUserService {
                 case 4 -> addExercise();
                 case 5 -> member.getTrainingPlan().clearPlan();
                 case 6 -> {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
                     System.out.println("\nAbgemeldet.");
                     System.out.println("----------------");
-=======
-=======
->>>>>>> Stashed changes
+
                     System.out.println("Abgemeldet.");
->>>>>>> Stashed changes
+
                     return;
                 }
                 default -> System.out.println("Ungültige Eingabe.");

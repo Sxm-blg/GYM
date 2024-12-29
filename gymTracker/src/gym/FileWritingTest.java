@@ -9,7 +9,11 @@ public class FileWritingTest {
 	        String fileName = "data.txt";
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	        List<String> content = List.of("Zeile 1", "Zeile 3");
+=======
+	        List<String> content = List.of("Zeile 1",, "Zeile 3");
+>>>>>>> Stashed changes
 =======
 	        List<String> content = List.of("Zeile 1",, "Zeile 3");
 >>>>>>> Stashed changes
