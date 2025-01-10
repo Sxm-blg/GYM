@@ -16,13 +16,14 @@ public class TrainingPlan {
 	            System.out.println("\nKein Trainingsplan vorhanden.");
 	            System.out.println("--------------------------------");
 	            return;
-	        }
+	        } else {
 
 	        System.out.println("\n-------- Trainingsplan --------");
 	        for (Exercise exercise : exercises) {
 	            System.out.println(exercise);
 	            System.out.println("----------------------------------------");
 	        }
+	       }
 	    }
 
 	    public List<Exercise> getExercises() {
@@ -31,7 +32,8 @@ public class TrainingPlan {
 
 	    public void clearPlan() {
 	        exercises.clear();
-	        System.out.println("Der Trainingsplan wurde gelöscht.");
+	        System.out.println("\nDer Trainingsplan wurde gelöscht.");
+	        System.out.println("---------------------------------------");
 	    }
 
 }
