@@ -36,8 +36,6 @@ public class MemberService implements GymUserService {
                     System.out.println("\nAbgemeldet.");
                     System.out.println("----------------");
 
-                    System.out.println("Abgemeldet.");
-
                     return;
                 }
                 default -> System.out.println("Ungültige Eingabe.");

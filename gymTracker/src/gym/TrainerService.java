@@ -36,6 +36,7 @@ public class TrainerService implements GymUserService {
     private void displayAllProgress() {
         for (GymUser user : users.values()) {
             if (user instanceof GymMember member) {
+            	 System.out.println("\n---------------------------------------");
             	 System.out.println("Mitglied: " + member.getMemberId());
             	 System.out.println("Daten des Mitglieds:");
                  System.out.println("E-Mail: " + member.getEmail());
