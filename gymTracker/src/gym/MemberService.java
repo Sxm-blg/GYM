@@ -23,7 +23,7 @@ public class MemberService implements GymUserService {
             System.out.println("6. Abmelden");
 
             int choice = sc.nextInt();
-            sc.nextLine(); // Puffer leeren
+            sc.nextLine(); 
 
             switch (choice) {
                 case 1 -> displayMemberData();
@@ -43,7 +43,7 @@ public class MemberService implements GymUserService {
         }
     }
    
-
+    //Method to check all MemberData
     private void displayMemberData() {
     	System.out.println("\n-------- Daten des Mitglieds --------");
         System.out.println("Mitgliedsnummer: " + member.getMemberId());
@@ -55,9 +55,9 @@ public class MemberService implements GymUserService {
         System.out.println("Zielgewicht: " + member.getTargetWeight() + " kg");
         System.out.println("Vorheriges Gewicht: " + member.getPreviousWeight() + " kg");
         System.out.println("--------------------------------------");
-        // Logik, um die Mitgliedsdaten anzuzeigen
+        
     }
-
+    //Method to update the User MemberData
     private void updateMemberData() {
     	 System.out.print("Neues Gewicht (kg): ");
          double weight = sc.nextDouble();
@@ -67,15 +67,15 @@ public class MemberService implements GymUserService {
          int age = sc.nextInt();
          System.out.print("Neues Zielgewicht (kg): ");
          double targetWeight = sc.nextDouble();
-         sc.nextLine(); // Puffer leeren
+         sc.nextLine(); 
 
          member.updateData(weight, height, age, targetWeight);
          System.out.println("\nDaten erfolgreich aktualisiert.");
          System.out.println("----------------------------------------");
      }
-        // Logik zur Aktualisierung der Daten
+        
     
-
+    //method to add a exercise to a member
     private void addExercise() {
     	System.out.println("\n-------- Trainingsplan Hinzufügen --------");
     	System.out.print("Übungsname: ");
@@ -86,12 +86,11 @@ public class MemberService implements GymUserService {
     	    int repetitions = sc.nextInt();
     	 System.out.print("Pause zwischen den Sätzen (Sekunden): ");
     	    int restBetweenSets = sc.nextInt();
-    	    sc.nextLine(); // Puffer leeren
+    	    sc.nextLine(); 
 
     	    member.getTrainingPlan().addExercise(name, sets, repetitions, restBetweenSets);
     	    System.out.println("\nÜbung erfolgreich hinzugefügt.");
     	    System.out.println("----------------------------------------");
-        // Weitere Eingaben für die Übung
-        // Hinzufügen zur Trainingsplanliste
+        
     }
 }

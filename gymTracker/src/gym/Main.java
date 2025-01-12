@@ -16,14 +16,14 @@ public class Main {
 	private static final FitnessCoach trainer = new FitnessCoach("simon.atim@gmail.com", "SerkanBelogi");
 	private static Scanner sc = new Scanner(System.in);
 
-	// Registirierungsvariablen wegen Exception
+	// register variable for Exception
 	private static double weight;
 	private static double height;
 	private static int age;
 	private static double targetWeight;
 
 	public static void main(String[] args) {
-		users.put(trainer.getEmail(), trainer); // Trainer vorregistrieren
+		users.put(trainer.getEmail(), trainer); // register Trainer
 		loadMembersFromFile();
 
 		while (true) {
@@ -33,7 +33,7 @@ public class Main {
 			System.out.println("3. Programm beenden");
 
 			int choice = sc.nextInt();
-			sc.nextLine(); // Puffer leeren
+			sc.nextLine(); 
 
 			switch (choice) {
 			case 1 -> registerMember();
@@ -47,6 +47,7 @@ public class Main {
 		}
 	}
 
+	
 	//method to register a new Member that will be saved in a file
 	private static void registerMember() throws InputMismatchException {
 		System.out.println("\n-------- REGISTRIERUNG --------");
@@ -66,9 +67,9 @@ public class Main {
 
 		System.out.print("Gewicht (kg): ");
 		try {
-			weight = sc.nextDouble(); // Klassenvariable
+			weight = sc.nextDouble(); 
 		} catch (InputMismatchException e) {
-			sc.nextLine(); // Eingabepuffer leeren
+			sc.nextLine(); 
 			System.out.println("Bitte geben Sie eine gültige Zahl ein!");
 			return;
 		}
@@ -77,7 +78,7 @@ public class Main {
 		try {
 			height = sc.nextDouble();
 		} catch (InputMismatchException e) {
-			sc.nextLine(); // Eingabepuffer leeren
+			sc.nextLine(); 
 			System.out.println("Bitte geben Sie eine gültige Zahl ein!");
 			return;
 		}
@@ -86,7 +87,7 @@ public class Main {
 		try {
 			age = sc.nextInt();
 		} catch (InputMismatchException e) {
-			sc.nextLine(); // Eingabepuffer leeren
+			sc.nextLine(); 
 			System.out.println("Bitte geben Sie eine gültige Zahl ein!");
 			return;
 		}
@@ -95,7 +96,7 @@ public class Main {
 		try {
 			targetWeight = sc.nextDouble();
 		} catch (InputMismatchException e) {
-			sc.nextLine(); // Eingabepuffer leeren
+			sc.nextLine(); 
 			System.out.println("Bitte geben Sie eine gültige Zahl ein!");
 			return;
 		}
@@ -131,7 +132,7 @@ public class Main {
 	private static void saveMembersToFile() {
 		List<String> lines = new ArrayList<>();
 		for (GymUser user : users.values()) {
-			// Überprüfen, ob der Benutzer ein GymMember ist
+			// Testing if User us GymMember
 			if (user instanceof GymMember) {
 				GymMember member = (GymMember) user;
 				lines.add(member.toFileFormat());
@@ -163,7 +164,7 @@ public class Main {
 					String[] parts = line.split(";");
 					if (parts.length != 9) {
 						System.out.println("Ungültige Zeile: " + line);
-						continue; // Überspringe ungültige Zeilen
+						continue; 
 					}
 
 					GymMember member = GymMember.fromFileFormat(line);

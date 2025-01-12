@@ -8,7 +8,8 @@ public abstract class GymUser {
 	protected int userId;
 	protected String email;
 	protected String password;
-
+	
+	//constructor
 	public GymUser(String email, String password) {
 		this.userId = nextId++;
 		this.email = email;
